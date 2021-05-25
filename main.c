@@ -1,23 +1,16 @@
 #include "main.h"
-#include <math.h>
 int main(){
-		
+	ct = calloc(1,sizeof(current_trade)); // current_trade 호가를 위한 값
 	print_f();
-	print_R();
-	
-	// print normal distribution
-    double* seq;
-    srand((unsigned int)time(NULL));
-    if ( (seq = generate(NMAX)) != NULL )
-    {
-        printf("mean = %g, stddev = %g\n\n", mean(seq,NMAX), stddev(seq,NMAX));
-        printHistogram(seq,NMAX);
-        free(seq);
- 
-        printf("\n%s\n", "press enter");
-        getchar();
-        return EXIT_SUCCESS;
-    }
+	for(int i=0; i<day_passed; i++){
+		// TODO 처음에 자동으로 30일 지나가는 부분
+		/*
+			등락/하락을 위한 값을 뽑는다 by 가중치
+			랜덤값이 코인의 가격에 영향주게 한다.
+			코인값 반영
+		*/
+	}
+	//pick_random_weighted(0,10,-50); // 우선 정규분포 느낌의 표 출력가능
 	
 	
 	return 0;

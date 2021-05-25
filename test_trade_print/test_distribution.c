@@ -1,31 +1,20 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#include <string.h>
 
+#define rand_range 100
+#define rand_center 50
+int pick_random_weighted(int mid, int range, int weight);
+int scale_how_much(int val);
 
-// 개수 : numberOf_trade_save
-void write_trade_info(current_trade* ct,int* price,int* amount_left,int* amount_right){
-	for(int i=0; i<numberOf_trade_save; i++){
-		ct->current_trade_price[i] = price[i];
-		ct->current_trade_amount_left[i] = amount_left[i];
-		ct->current_trade_amount_right[i] = amount_right[i];
-	}	
+int main(){
+	int val = pick_random_weighted(0,50,0);
+	printf("%d\n",scale_how_much(val));
+	return 0;
 }
-/*
- test code
-int current_trade_price[4] = {405,400,395,390};
-int current_trade_amount_left[4] = {300,0,0,0};
-int current_trade_amount_right[4] = {0,400,500,600};
-	write_trade_info(ct,current_trade_price,current_trade_amount_left,current_trade_amount_right);
-	for(int i=0; i<numberOf_trade_save; i++){
-		printf("%d %d %d\n",ct->current_trade_price[i],ct->current_trade_amount_left[i],ct->current_trade_amount_right[i]);
-	}
-*/
-// weighted random pick 가중치를 준 랜덤 뽑기
-//int pick_random_with_weighted(int mid, int weight){
-// |-------------|------------| : random array
-//         |----|----|			: mid & range
-//            <- mid -> 		: 위에서 가운데가 mid, 좌우로 차이가 range
-//50+weight기준으로 좌측 : 하락 , 우측 : 상승 
-// mid 기준점 : 0
+
 int pick_random_weighted(int mid, int range, int weight){
 	// rand_range 100 , rand_center 50
 	srand(time(NULL)+rand());
@@ -71,5 +60,3 @@ int scale_how_much(int val){
 	printf("%lf\n",val_s);
 	return (int)(val_s);
 }
- 
- 
