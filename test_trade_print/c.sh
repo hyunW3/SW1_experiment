@@ -1,3 +1,3 @@
 #!/bin/sh
-gcc test_distribution.c -lm
+gcc trade_print.c -lm
 ./a.out

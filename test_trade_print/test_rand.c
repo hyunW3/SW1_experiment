@@ -9,9 +9,13 @@
 int pick_random_weighted(int mid, int range, int weight);
 int scale_how_much(int val);
 
+
+//for rand.c 디버그용
 int main(){
-	int val = pick_random_weighted(0,50,0);
-	printf("%d\n",scale_how_much(val));
+	int val = pick_random_weighted(0,10,0);
+	val = scale_how_much(val);
+	val = pick_random_weighted(val,10,0);
+	printf("val : %d\n",val);
 	return 0;
 }
 
@@ -27,15 +31,15 @@ int pick_random_weighted(int mid, int range, int weight){
 	rand_num = calloc(rand_range,sizeof(int));
 	for(int i=0; i<10; i++){
 		for(int j=0; j<10; j++){
-			int range_1,index;
+			int loc_range,index;
 			
-			if(i<=4) range_1= val_range[i+1]-val_range[i];
-			else range_1 = val_range[i] - val_range[i-1];
+			if(i<=4) loc_range= val_range[i+1]-val_range[i];
+			else loc_range = val_range[i] - val_range[i-1];
 			index = 10*i+j;
-			//if(range_1==0)	rand_num[index] = rand()%30 + (rand_range-30);
+			//if(loc_range==0)	rand_num[index] = rand()%30 + (rand_range-30);
 			//else rand_num[index] = rand()%range_1 + val_range[i];
-			if(range_1==0)	rand_num[index] = rand()%15+1 ;
-			else rand_num[index] = rand()%range_1 + val_range[i];
+			if(loc_range==0)	rand_num[index] = rand()%15+1 ;
+			else rand_num[index] = rand()%loc_range + val_range[i];
 			
 			printf("%2d ",rand_num[index]);
 		}printf("\n");
@@ -56,7 +60,8 @@ int pick_random_weighted(int mid, int range, int weight){
 int scale_how_much(int val){
 	// 얼마나 증가/감소할건지 랜덤으로 선택하기 위해 scale하는 함수
 	// 결정변수 x
-	double val_s = (val*0.3); // 
+	double val_s = (val*0.27); // 
 	printf("%lf\n",val_s);
+	while(val_s > -1 && val_s < 1) val_s *=2;
 	return (int)(val_s);
 }
