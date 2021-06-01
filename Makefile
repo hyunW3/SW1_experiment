@@ -2,11 +2,11 @@ TARGET=main
 CXX=gcc
 CFLAG=-Wall
 OBJDIR=object
-OBJECT=main.o func.o recommend.o rand.o print_session.o insert_data.o select.o
+OBJECT=main.o func.o recommend.o print_session.o insert_data.o select.o rand.o rank.o
 $(TARGET): $(OBJECT)
 	$(CXX) $(CFLAGS) -o $(TARGET) $(OBJECT) -lm
 	mv *.o $(OBJDIR)
-	./main
+	#./main
 main.o: main.c
 	$(CXX) $(CFLAGS) -c main.c -lm
 func.o: func.c
@@ -21,6 +21,8 @@ print_session.o: print_session.c
 	$(CXX) $(CFLAGS) -c print_session.c -lm
 insert_data.o: insert_data.c
 	$(CXX) $(CFLAGS) -c insert_data.c -lm
+rank.o: rank.c
+	$(CXX) $(CFLAGS) -c rank.c -lm
 clean:
 	rm -f $(OBJECT) $(TARGET)
 run :

@@ -8,6 +8,7 @@ ANALYZED yong(INFOR infor){
 	int rf; //오늘 상승(1)인지 하락(0)인지
 	int rise=50; //상승확률 50%
 	int fall; // 하락확률
+	int val = 0;
 	//char t_amount; 거래량이고 low, normal, high 로 받을 예정
 	ANALYZED output;
 	
@@ -24,21 +25,23 @@ ANALYZED yong(INFOR infor){
 		}
 		twenty[1] /= 20;
 	}
-	int val = new_getter();//int val = -40; 뉴스에 따른 값 받기, 테스트용
-	int val_s = (abs(val))/10; //찐 계수형태
+	if(day>30 && day%4==3){ //뉴스 있음, 뉴스는 랜덤 30일 이후부터 + 4일에 한번 day31, 35, 39 ...
+		val = new_getter();//int val = -40; 뉴스에 따른 값 받기, 테스트용
+		int val_s = (abs(val))/10; //찐 계수형태
 	
-	if(val_s==1 || val_s==2){ //거래량 normal:high = 1:1 , low안나옴, 아 그리고 뉴스 없으면 low:normal = 1:1에 high없는걸로
-		// 거래량 normal,high 50%확률로 
-		if(half_half() ==0){//if(val_s==2){
+		if(val_s==1 || val_s==2){ //거래량 normal:high = 1:1 , low안나옴, 아 그리고 뉴스 없으면 low:normal = 1:1에 high없는걸로
+			// 거래량 normal,high 50%확률로 
+			if(half_half() ==0){//if(val_s==2){
+				strcpy(output.t_amount,"high");
+			}	else strcpy(output.t_amount,"normal");
+			rise = rise + val;
+		}
+		else if(val_s==3 || val_s==4){ //거래량 high만 나와야됨
 			strcpy(output.t_amount,"high");
-		}else strcpy(output.t_amount,"normal");
-		rise = rise + val;
-	}
-	else if(val_s==3 || val_s==4){ //거래량 high만 나와야됨
-		strcpy(output.t_amount,"high");
-		rise = rise + val;
-	}
-	else{	//뉴스 없음
+			rise = rise + val;
+		}
+	}else{	//뉴스 없음
+		memset(news,0,LINE_MAX*sizeof(char));
 		if(half_half() ==0){ //low, normal 반반
 			strcpy(output.t_amount,"low");
 		}
@@ -106,6 +109,7 @@ ANALYZED yong(INFOR infor){
 	three[0] = three[1]; // for cross test
 	seven[0] = seven[1];
 	twenty[0] = twenty[1];
+	output.val_news = val;
 
 	
 	return output;

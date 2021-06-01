@@ -15,22 +15,60 @@ int current_trade_amount_left[4] = {300,0,0,0};
 int current_trade_amount_right[4] = {0,400,500,600};
 
 
+void graph(int *price, int len, int max_val);
 int main(){
 	int day =1;
+	int *price;
 	coin_info = calloc(1,sizeof(coin));
 	trade_info = calloc(1,sizeof(trade));
 	user = calloc(1,sizeof(user));
+	price = calloc(30,sizeof(int));
+	for(int i=0; i<30; i++){
+		price[i] = (rand()%20)*10+200; // 200~400
+		printf("%d ",price[i]);
+		if(i == 14) printf("\n");
+	}printf("\n");
+	graph(price,30,300);
 	
+	/*
 	insert_user_info(user,INIT_MONEY,benefit,0);
-	
 		int action = print_nth_day(day,user,infor,analyzed,trade_info);
 	printf("action :%d\n",action);
+	*/
 	return 0;
 }
 
-
+// range 정보 같이 있어도 ㄱㅊ을듯
+void graph(int *price, int len, int max_val){
+	printf("\t\t===============최근 %2d일간 그래프===============\n",len);
+	int num_divide = 10; // 10등분
+	int divide_val = max_val/num_divide; 
+	printf("%10d ~            ",max_val);
+	for(int j=0; j<len; j++){
+		if(price[j]>=max_val) printf(" ~ ");
+		else printf("   ");
+	}printf("\n");
+	for(int i=10; i>=1; i--){ // 10 등분해서 표현
+		int bottom = divide_val*(i-1);
+		int top = divide_val*i;
+		printf("%10d ~ %10d ",bottom,top);
+		for(int j=0; j<len; j++){
+			if((bottom<=price[j]) && (price[j]<top)) printf(" _ ");
+			else if(price[j] >= divide_val*i) printf(" | ");
+			else printf("   ");
+		}printf("\n");
+	}
+	printf("          ");
+	printf("   ");
+	printf("           ");
+	for(int j=1; j<=len; j++){
+		printf("%2d ",j);
+	}printf("\n");
+}
+/*
 int print_nth_day(int date,user_info* user,INFOR infor,ANALYZED analyzed ,trade* trade_info){
 	// trade* trade_info 여기서 만들자
+	//210531 - 14:31분에 print_session에 두고 수정함
 	if(strlen(news)==0) strcpy(news,"뉴스 없습니다.");
 	char action;
 	printf("================================================\t%3d일차\t\t ==============================================================\n",date);
@@ -64,7 +102,7 @@ int print_nth_day(int date,user_info* user,INFOR infor,ANALYZED analyzed ,trade*
 	}
 }
 
-
+*/
 
 
 //TODO user info와 분리해서 만들자 
