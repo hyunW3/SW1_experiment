@@ -64,7 +64,7 @@ int scale_how_much(int val){
 	// 결정변수 x
 	double val_s = (val*0.29); // 
 	//printf("val_s : %.1lf\n",val_s);
-	while(val_s > -1 && val_s < 1) val_s *=2;
+	if(val_s > -1 && val_s < 1) val_s =0;
 	return (int)(val_s); // 이거 0~100사이값(위의 함수(에서 나온 val -> 0~30 로 스케일링해주는 함수다)
 }
  

@@ -36,8 +36,8 @@ void rank(){
 	}
 	result = fopen("ranking.txt", "w"); // 다 덮어씌우기
 	
-	for(i=0;i<num;i++){
-		if(!strcmp(nick,r_nick[i]) == 1) printf("축하드립니다! %d등입니다!\n",i+1);
+	for(i=0;i<num;i++){ // 해당에서 문제
+		if(!strcmp(nick,r_nick[i]) == 1) printf("축하드립니다! %d등입니다!\n",i+1); // 중복 닉네임시 문제
 		//printf("%d등 %10s %d\n",i,r_nick[i],r_money[i]);
 		fprintf(result, "%dth %10s %dKRW\n",i+1,r_nick[i], r_money[i]);
 	}

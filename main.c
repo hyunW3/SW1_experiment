@@ -54,7 +54,6 @@ int main(){
 		analyzed=yong(infor); // 가중치 결정
 		printf("DEBUG : before recommend\n");
 		recommend_out = recommend(analyzed, infor, risefall, day);
-		printf("DEBUG : recommend cause : %s %s %s\n", recommend_out.most_impact[0], recommend_out.most_impact[1], recommend_out.most_impact[2]);
 		int action;
 RESTART:
 		action = print_nth_day(day-DAY_PASSED,user,infor,analyzed,recommend_out, accuracy_rate); // return action
@@ -74,6 +73,7 @@ RESTART:
 		printf("DEBUG : rise_cnt : %d, fall_cnt : %d \n", recommend_out.rise_cnt, recommend_out.fall_cnt);
 		printf("DEBUG : accuracy_rate %.1f: \n", accuracy_rate);
 		printf("DEBUG : knn[i][5] : %d\n", knn[day - 1][5]);
+		printf("DEBUG : recommend cause : %s %s %s\n", recommend_out.most_impact[0], recommend_out.most_impact[1], recommend_out.most_impact[2]);
 		// README.md로 옮겨놓음 210531_23
 		// action에 따른 함수 
 		printf("DEBUG :action : %d\n",action);
@@ -102,7 +102,7 @@ RESTART:
 				flag_finish = 1;
 				break;
 		}
-		if(user->current_money<=0){
+		if(user->current_money<=0 && user->num_coin <=0){
 			printf("*******************게임종료 (사유 : 남은 돈을 다 썼습니다.)************************\n");
 			sleep(1);
 			return -1; // 유저 시드머니 증발

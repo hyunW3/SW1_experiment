@@ -4,6 +4,9 @@ void clear_session(){
 }
 int print_nth_day(int date,user_info* user,INFOR infor,ANALYZED analyzed ,RECOMMENDED rd, double accuracy_rate){
 	char prediction[6][15] = {"fall(high)", "fall(normal)", "fall(low)", "rise(low)", "rise(normal)", "rise(high)"};
+	int cnt;
+	if(rd.rise_cnt >= 3) cnt = rd.rise_cnt;
+	else cnt = rd.fall_cnt;
 	if(strlen(news)==0) strcpy(news,"뉴스 없습니다.");
 	char action;
 	printf("================================================\t%3d일차\t\t ==============================================================\n",date);
@@ -28,10 +31,13 @@ int print_nth_day(int date,user_info* user,INFOR infor,ANALYZED analyzed ,RECOMM
 	// line 6
 	printf(" 수익률\t\t: %10.2f(%%)\t\t\t\t",
 		   user->benefit_percent);
-	printf("등락예측: %s\t\t\t\t\t\n", 
+	printf("등락예측: %s\t\t\t\t\t", 
 		  prediction[rd.rise_cnt]);
+	printf("추천한 이유는 다음과 같습니다. :\n");
 	// line 7
-	printf(" \t\t\t\t\t\t\t예측 정확도: %.1f(%%)\n", accuracy_rate);
+	printf(" \t\t\t\t\t\t\t예측 정확도: %.1f(%%)\t\t\t\t", accuracy_rate);
+	for(int i = 0; i < cnt; i++) printf("%s ", rd.most_impact[i]);
+	printf("\n");
 	//(infor.rf==1)?('↑'):('↓'),
 	while(1){
 		printf("\n\t당신의 행동은?\n");
@@ -55,7 +61,7 @@ int print_nth_day(int date,user_info* user,INFOR infor,ANALYZED analyzed ,RECOMM
 
 
 void graph(int day,int *price, int len, int max_val){
-	
+	printf("                      ");
 	printf("==============================");
 	printf("최근 %2d일간 그래프",len);
 	printf("==============================\n");

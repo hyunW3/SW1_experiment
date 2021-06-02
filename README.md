@@ -1,10 +1,12 @@
 	Problem
-	1. 잔고가 음수가 되면 안된다. -> select에서 예외 케이스 처리
-	2. 
-	
+	1. 게임 끝난 후 랭킹 FILE IO 
+		- File write 문제
+		- 같은 닉네임시 문제
+11th        JOT 499696KRW
+12th 1000000KRWJOT 0KRW
+13th        JOT 0KRW	
 	해야 할것
 	1. 문제 2번해결 이후 while문에 추천함수 적절히 넣기
-	2. 게임 끝난 후 랭킹 FILE IO 
 	3. print_nth_day 완성 -> 뭐 추가해되는지 적어주세요 :
 
 # part 분배
