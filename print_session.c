@@ -31,12 +31,16 @@ int print_nth_day(int date,user_info* user,INFOR infor,ANALYZED analyzed ,RECOMM
 	// line 6
 	printf(" 수익률\t\t: %10.2f(%%)\t\t\t\t",
 		   user->benefit_percent);
-	printf("등락예측: %s\t\t\t\t\t", 
+	printf("등락예측: %s\t\t\t\t", 
 		  prediction[rd.rise_cnt]);
-	printf("추천한 이유는 다음과 같습니다. :\n");
+	printf("아래의 5개가 제일 가까운 값들입니다.(KNN base) \n");
 	// line 7
 	printf(" \t\t\t\t\t\t\t예측 정확도: %.1f(%%)\t\t\t\t", accuracy_rate);
-	for(int i = 0; i < cnt; i++) printf("%s ", rd.most_impact[i]);
+	for(int i = 0; i < cnt; i++){
+		if(i==0) printf("%s", rd.most_impact[i]);
+		else printf(", %s", rd.most_impact[i]);
+		
+	} 
 	printf("\n");
 	//(infor.rf==1)?('↑'):('↓'),
 	while(1){

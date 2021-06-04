@@ -21,14 +21,14 @@ int main(){
 		}
 		price[day] = infor.price;
 		if(max_val < price[day]) max_val = price[day];
-		printf("DEBUG : infor : %d %d %d\n",infor.rf,infor.price,infor.rf);
+		//printf("DEBUG : infor : %d %d %d\n",infor.rf,infor.price,infor.rf);
 		analyzed=yong(infor); // 가중치 결정
 		//yong으로 가중치를 구하면 그걸 토대로 내일 가격과 내일 입장의 rf이 나오는데 그걸 else 돌릴때 넣어줘야함. 30일 돌리는거에서 할건 이게 다 인듯
-		printf("DEBUG : after analyzed %d\n",analyzed.rise-analyzed.fall);
+		//printf("DEBUG : after analyzed %d\n",analyzed.rise-analyzed.fall);
 		risefall = pick_random_weighted(20,rand_range,analyzed.rise-analyzed.fall);
-		printf("DEBUG : after rand func risefall : %d(%%)\n",risefall);
+		//printf("DEBUG : after rand func risefall : %d(%%)\n",risefall);
 		recommend_out = recommend(analyzed, infor, risefall, day);
-		printf("DEBUG : label : %d\n", knn[day - 1][5]);
+		//printf("DEBUG : label : %d\n", knn[day - 1][5]);
 		
 		// 30일떄, infor struct 
 		// price[1000] 저장
@@ -52,13 +52,13 @@ int main(){
 		price[day] = infor.price;
 		if(max_val < price[day]) max_val = price[day];
 		analyzed=yong(infor); // 가중치 결정
-		printf("DEBUG : before recommend\n");
+		//printf("DEBUG : before recommend\n");
 		recommend_out = recommend(analyzed, infor, risefall, day);
 		int action;
 RESTART:
 		action = print_nth_day(day-DAY_PASSED,user,infor,analyzed,recommend_out, accuracy_rate); // return action
 		// rise&fall 
-		printf("DEBUG : infor : %d %d %d\n",infor.rf,infor.price,infor.rf);
+		//printf("DEBUG : infor : %d %d %d\n",infor.rf,infor.price,infor.rf);
 		
 		//yong으로 가중치를 구하면 그걸 토대로 내일 가격과 내일 입장의 rf이 나옴
 		// 추천 관련정보는 print_nth_day 앞에서
@@ -66,17 +66,17 @@ RESTART:
 		// 다른때 쓸일있음?
 		// 내일 가격 결정할때 val_s 반영해야하는거 맞지 
 		// 아아 맞다 그거 귀찮아서 apply_infor 여기 함수에 넣었음 insert_data.c에 있어
-		printf("DEBUG : after analyzed %d\n",analyzed.rise-analyzed.fall);
+		//printf("DEBUG : after analyzed %d\n",analyzed.rise-analyzed.fall);
 		risefall = pick_random_weighted(0,rand_range,analyzed.rise-analyzed.fall);
-		printf("DEBUG : after rand func risefall : %d(%%)\n",risefall);
+		//printf("DEBUG : after rand func risefall : %d(%%)\n",risefall);
 		accuracy_rate = accuracy(recommend_out.rise_cnt, risefall, day-DAY_PASSED);
-		printf("DEBUG : rise_cnt : %d, fall_cnt : %d \n", recommend_out.rise_cnt, recommend_out.fall_cnt);
-		printf("DEBUG : accuracy_rate %.1f: \n", accuracy_rate);
-		printf("DEBUG : knn[i][5] : %d\n", knn[day - 1][5]);
-		printf("DEBUG : recommend cause : %s %s %s\n", recommend_out.most_impact[0], recommend_out.most_impact[1], recommend_out.most_impact[2]);
+		//printf("DEBUG : rise_cnt : %d, fall_cnt : %d \n", recommend_out.rise_cnt, recommend_out.fall_cnt);
+		//printf("DEBUG : accuracy_rate %.1f: \n", accuracy_rate);
+		//printf("DEBUG : knn[i][5] : %d\n", knn[day - 1][5]);
+		//printf("DEBUG : recommend cause : %s %s %s\n", recommend_out.most_impact[0], recommend_out.most_impact[1], recommend_out.most_impact[2]);
 		// README.md로 옮겨놓음 210531_23
 		// action에 따른 함수 
-		printf("DEBUG :action : %d\n",action);
+		//printf("DEBUG :action : %d\n",action);
 		int fail=0;
 		switch(action){
 			case 1: //select1;

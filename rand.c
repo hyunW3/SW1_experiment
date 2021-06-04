@@ -21,8 +21,6 @@ int pick_random_weighted(int mid, int range, int weight){
 	srand(time(NULL)*rand());
 	int* rand_num;
 	int index,val;
-	//int val_range[10] = {1,rand_range/10,rand_range/5,rand_range/4,rand_range/2,
-	//					 rand_range/2,rand_range/5,rand_range/4,rand_range/10,1};
 	int val_range[10] = {rand_range/1.6, rand_range/4, rand_range/6, rand_range/8, 1,
 						 1,rand_range/8,rand_range/6,rand_range/4,rand_range/1.6};
 	rand_num = calloc(rand_range,sizeof(int));
@@ -55,7 +53,7 @@ int pick_random_weighted(int mid, int range, int weight){
 	
 	val = scale_how_much(val);
 	// 0~100 사이값 -> 0~30으로 리스케일
-	printf("DEBUG : index : %d, val : %d\n",index,val);  
+	//printf("DEBUG : index : %d, val : %d\n",index,val);  
 	return val; 
 }
 
@@ -138,7 +136,7 @@ int parse_newsfile(char* news,char* key1,char* pLine){
 		pos = str_copy(news,ptr,pos);
 		val *= -1;
 	}
-	printf("DEBUG : news: %s in parse_newsfile\n",news);
+	//printf("DEBUG : news: %s in parse_newsfile\n",news);
 	return val*10;
 }
 int str_copy(char* des, char* src,int pos){

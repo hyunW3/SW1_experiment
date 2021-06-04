@@ -6,8 +6,6 @@
 12th 1000000KRWJOT 0KRW
 13th        JOT 0KRW	
 	해야 할것
-	1. 문제 2번해결 이후 while문에 추천함수 적절히 넣기
-	3. print_nth_day 완성 -> 뭐 추가해되는지 적어주세요 :
 
 # part 분배
 func.c -> 용준이 

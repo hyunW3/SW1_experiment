@@ -115,25 +115,4 @@ ANALYZED yong(INFOR infor){
 	return output;
 }
 
-/*int main(){
-	INFOR a;
-	ANALYZED b;
-	int i;
-	for(i=0;i<21;i++){
-		a.day = i+1;
-		if(i%2==0)a.price = 200+i ,a.rf=1;
-		else a.price = 200-i ,a.rf=0;
-		b=yong(a);
-		printf("%d\n",b.day3);
-		printf("%d\n",b.day7);
-		printf("%d\n",b.day20);
-		printf("%d\n",b.rise);
-		printf("%d\n",b.fall);
-		printf("%d\n",b.g_cross);
-		printf("%d\n",b.d_cross);
-		printf("%s\n",b.t_amount);
-	}
-	
-}*/
-
 
