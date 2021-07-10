@@ -1,11 +1,8 @@
-	Problem
-	1. 게임 끝난 후 랭킹 FILE IO 
-		- File write 문제
-		- 같은 닉네임시 문제
-11th        JOT 499696KRW
-12th 1000000KRWJOT 0KRW
-13th        JOT 0KRW	
-	해야 할것
+Problem
+1. 게임 끝난 후 랭킹 FILE IO 
+	- File write 문제
+	- 같은 닉네임시 문제
+		
 
 # part 분배
 func.c -> 용준이 
