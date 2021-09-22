@@ -22,15 +22,15 @@ func.c (용준)
 - 거래량 결정(rand함수로) 
 recommand.c
 
-// 용준이가 작성한 키워드 파일들은 keyword폴더에 저장해두었슴다.
+ 키워드 파일들은 keyword폴더에 저장해두었슴다.
 
-//시소실 목요일 세부세션결과
+# 시소실 목요일 세부세션결과
 인자를 통한 주식 등락결정 / 이전데이터를 이용한 추천기능
 + FILE IO를 통한 멀티 유저 플레이
 - 다음날 오르고 내리는 폭기준 매수/매도가에 해당되면 체결되게 
 
-추후 TODO
-// gnuplot을 통해서 그래프 그리기
-// setConsoleTextAttribute으로 콘솔 색 바꾸기 
+# 추후 TODO
+1. gnuplot을 통해서 그래프 그리기
+2. setConsoleTextAttribute으로 콘솔 색 바꾸기 
 
 
